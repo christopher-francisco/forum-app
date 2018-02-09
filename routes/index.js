@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/', function(req, res, next) {
   res.json({
-    foo: 'bar',
+    version: process.env.npm_package_version,
   })
 });
 
