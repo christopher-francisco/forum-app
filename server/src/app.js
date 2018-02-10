@@ -8,7 +8,10 @@ const routes = require('./routes');
 
 const app = express();
 
-app.use(logger('dev'));
+if (app.get('env') !== 'test') {
+  app.use(logger('dev'));
+}
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
