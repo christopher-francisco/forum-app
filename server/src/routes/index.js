@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
+router.get('/about', function(req, res, next) {
   res.json({
+    name: process.env.npm_package_name,
     version: process.env.npm_package_version,
   })
 });
