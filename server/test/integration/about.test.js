@@ -6,7 +6,7 @@ const expect = chai.expect;
 
 describe('Endpoint /about ', () => {
   describe('GET /', () => {
-    it('gets the app name and version', () => {
+    it('should return the app name and version', () => {
       return request(app).get('/about')
         .expect('Content-Type', /json/)
         .expect(200)
