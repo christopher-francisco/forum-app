@@ -2,15 +2,23 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-const ThreadsPage = ({ isFetching, threads }) => {
-  return (
-    <div>
-      <pre>
-        Is Fetching: { isFetching ? 'true' : 'false'  },
-        Threads: { threads.length }
-      </pre>
-    </div>
-  );
+import { fetchThreads } from './actions';
+
+class ThreadsPage extends React.Component {
+  componentDidMount() {
+    this.props.fetchThreads();
+  }
+
+  render() {
+    return (
+      <div>
+        <pre>
+          Is Fetching: { this.props.isFetching ? 'true' : 'false'  },
+          Threads: { this.props.threads.length }
+        </pre>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
@@ -19,6 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
+  fetchThreads,
 }, dispatch);
 
 export default connect(
