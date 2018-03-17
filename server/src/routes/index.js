@@ -1,11 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const aboutRouter = require('./about');
+const threadsRouter = require('./threads');
 
-router.get('/about', function(req, res, next) {
-  res.json({
-    name: process.env.npm_package_name,
-    version: process.env.npm_package_version,
-  })
-});
+const router = express.Router();
+
+router.use('/about', aboutRouter);
+router.use('/threads', threadsRouter)
 
 module.exports = router;

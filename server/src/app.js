@@ -4,11 +4,16 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+const config = require('./config');
+const mongoose = require('./mongoose');
 const routes = require('./routes');
 
 const app = express();
 
-app.use(logger('dev'));
+if (app.get('env') !== 'test') {
+  app.use(logger('dev'));
+}
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
